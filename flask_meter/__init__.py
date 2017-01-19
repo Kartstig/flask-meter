@@ -3,3 +3,5 @@
 __author__ = """Herman Paul Singh"""
 __email__ = 'kartstig@gmail.com'
 __version__ = '0.1.0'
+
+from flask_meter import FlaskMeter
