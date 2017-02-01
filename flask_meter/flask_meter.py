@@ -5,7 +5,7 @@ from __future__ import print_function
 from flask import Flask, jsonify
 from datetime import datetime
 
-from flask_meter.git import git_stats
+from .git import git_stats
 
 class FlaskMeter(object):
 
