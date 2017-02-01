@@ -8,34 +8,53 @@ test_flask_meter
 Tests for `flask_meter` module.
 """
 
-import pytest
+import pytest, json
 
+from unittest import mock
 from contextlib import contextmanager
-from click.testing import CliRunner
-
-from flask_meter import flask_meter
-from flask_meter import cli
-
+from flask_meter import FlaskMeter
 
 @pytest.fixture
-def response():
-    """Sample pytest fixture.
-    See more at: http://doc.pytest.org/en/latest/fixture.html
-    """
-    # import requests
-    # return requests.get('https://github.com/audreyr/cookiecutter-pypackage')
+def flask_app():
+  from flask import Flask
+  app = Flask("TEST_APP")
+  app.config['TESTING'] = True
+  return app
 
+def test_constructor(flask_app):
+  fm = FlaskMeter(flask_app)
+  assert isinstance(fm, FlaskMeter)
+  assert fm.app.name == "TEST_APP"
+  assert fm.app.config['FM_GIT'] == True
 
-def test_content(response):
-    """Sample pytest test function with the pytest fixture as an argument.
-    """
-    # from bs4 import BeautifulSoup
-    # assert 'GitHub' in BeautifulSoup(response.content).title.string
-def test_command_line_interface():
-    runner = CliRunner()
-    result = runner.invoke(cli.main)
-    assert result.exit_code == 0
-    assert 'flask_meter.cli.main' in result.output
-    help_result = runner.invoke(cli.main, ['--help'])
-    assert help_result.exit_code == 0
-    assert '--help  Show this message and exit.' in help_result.output
+def test_init_app(flask_app):
+  fm = FlaskMeter()
+  fm.init_app(flask_app)
+  assert isinstance(fm, FlaskMeter)
+  assert fm.app.name == "TEST_APP"
+
+def test_response(flask_app):
+  import subprocess
+
+  commit = "lfbd90b2kn2knpds0iboslkmb2kl2g90sg09sbjl"
+  author = "He-Man with an R <he-man@gmail.com>"
+  date = "Tue Apr 20 01:04:20 2017 -0500"
+  def mock_subprocess(*args, **kwargs):
+    lines = [
+      "commit:\t{}".format(commit),
+      "Author:\t{}".format(author),
+      "Date:\t{}".format(date)]
+    return "\n".join(lines).encode('utf-8')
+
+  subprocess.check_output = mock_subprocess
+  fm = FlaskMeter(flask_app)
+  client = fm.app.test_client()
+  rv = client.get("/_health")
+  data = json.loads(rv.data.decode('utf-8'))
+  assert rv.status_code == 200
+  assert data['status'] == 'OK'
+  assert data['app'] == fm.app.name
+  assert data['git'] != {}
+  assert data['git']['author'] == author
+  assert data['git']['commit'] == commit
+  assert data['git']['date'] == date
