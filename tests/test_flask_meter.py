@@ -10,7 +10,6 @@ Tests for `flask_meter` module.
 
 import pytest, json
 
-from unittest import mock
 from contextlib import contextmanager
 from flask_meter import FlaskMeter
 
