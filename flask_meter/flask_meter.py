@@ -2,48 +2,36 @@
 
 from __future__ import print_function
 
-import subprocess
+from flask import Flask, jsonify
+from datetime import datetime
 
-from flask import jsonify
+from flask_meter.git import git_stats
 
 class FlaskMeter(object):
-  GIT_CMD = 'git log | head -3'
 
   def __init__(self, app=None):
-
     self.app = app
 
     if app is not None:
       self.init_app(app)
 
   def init_app(self, app):
-    """
-    Adds in hooks to Flask
-    """
+    if not isinstance(app, Flask):
+      raise TypeError("Argument app is not of type Flask")
 
     self.app = app
+    self.app.config['FM_GIT'] = self.app.config.get('FM_GIT', True)
+    self.start_time = datetime.now()
 
     def _health():
-      data = {}
-      try:
-        ret = subprocess.check_output([self.GIT_CMD], shell=True).split("\n")
-        if len(ret) >= 3:
-          commit = ret[0].split()[1]
-          author = (" ").join(ret[1].split()[1:])
-          date = (" ").join(ret[2].split()[1:])
-          git_enable = True
-        else:
-          git_enable = False
-      except subprocess.CalledProcessError:
-        git_enable = False
-
       data = {
         "status":     "OK",
-        "git_check":  git_enable,
-        "commit":     commit,
-        "author":     author,
-        "date":       date
+        "uptime":     str(datetime.now() - self.start_time),
+        "app":        self.app.name,
       }
+
+      if self.app.config['FM_GIT']:
+        data.update({"git": git_stats()})
 
       return jsonify(data)
 
