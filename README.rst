@@ -3,8 +3,8 @@ Flask-Meter
 ===============================
 
 
-.. image:: https://img.shields.io/pypi/v/flask_meter.svg
-        :target: https://pypi.python.org/pypi/flask_meter
+.. image:: https://app.codeship.com/projects/7cd6bad0-ca79-0134-1460-327d40ee31ac/status?branch=master
+        :target: https://app.codeship.com/projects/199620
 
 .. image:: https://img.shields.io/travis/KartStig/flask_meter.svg
         :target: https://travis-ci.org/KartStig/flask_meter
