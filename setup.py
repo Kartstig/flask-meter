@@ -19,13 +19,13 @@ test_requirements = [
 
 setup(
     name='Flask-Meter',
-    version='0.1.0',
+    version='0.1.1',
     description="Flask-Meter adds a monitoring endpoint for consuming application host metrics.",
     long_description=readme + '\n\n' + history,
     author="Herman Paul Singh",
     author_email='kartstig@gmail.com',
     url='https://github.com/KartStig/flask_meter',
-    download_url="https://github.com/KartStig/flask_meter/tarball/0.1.0"
+    download_url="https://github.com/KartStig/flask_meter/tarball/0.1.1",
     packages=[
         'flask_meter',
     ],
