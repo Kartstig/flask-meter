@@ -24,7 +24,7 @@ def test_constructor(flask_app):
   fm = FlaskMeter(flask_app)
   assert isinstance(fm, FlaskMeter)
   assert fm.app.name == "TEST_APP"
-  assert fm.app.config['FM_GIT'] == True
+  assert fm.app.config['FLASK_METER_GIT'] == True
 
 def test_init_app(flask_app):
   fm = FlaskMeter()
@@ -57,3 +57,12 @@ def test_response(flask_app):
   assert data['git']['author'] == author
   assert data['git']['commit'] == commit
   assert data['git']['date'] == date
+
+def test_disable(flask_app):
+  flask_app.config['FLASK_METER_ENABLE'] = False
+  fm = FlaskMeter()
+  fm.init_app(flask_app)
+  client = fm.app.test_client()
+  rv = client.get("/_health")
+
+  assert rv.status_code == 404
