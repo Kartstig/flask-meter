@@ -66,3 +66,19 @@ def test_disable(flask_app):
   rv = client.get("/_health")
 
   assert rv.status_code == 404
+
+
+def test_extra(flask_app):
+  def fake_function():
+    """TestingFunc"""
+    return True
+
+  fm = FlaskMeter()
+  fm.init_app(flask_app, extra_checks=[fake_function])
+
+  client = fm.app.test_client()
+  rv = client.get("/_health")
+
+  assert rv.status_code == 200
+  data = json.loads(rv.data.decode('utf-8'))
+  assert data['TestingFunc'] == 'OK'

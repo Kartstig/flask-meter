@@ -27,6 +27,11 @@ class FlaskMeter(object):
               "uptime": str(datetime.now() - self.start_time),
               "app": self.app.name}
 
+      if extra_checks:
+        extra_results = {func.__doc__: "OK" if func() else "DOWN"
+                        for func in extra_checks}
+        data.update(extra_results)
+
       if self.app.config['FLASK_METER_GIT']:
         data.update({"git": git_stats()})
 
