@@ -2,15 +2,54 @@
 Flask-Meter
 ===============================
 
+Flask-Meter is an add-on to the Flask web framework. Flask-Meter adds a
+monitoring endpoint for consuming application metrics. It can be really simple
+to set up. Flask-Meter modifies the Flask application to provide an enpoint
+at `/_health` where you will get a JSON response of the system's uptime,
+current git revision.
 
-.. image:: https://app.codeship.com/projects/7cd6bad0-ca79-0134-1460-327d40ee31ac/status?branch=master
-        :target: https://app.codeship.com/projects/199620
+You can also add in extra checks by passing in a list of checks to the
+constructor.
+
+Installing
+----------
+
+Install and update using `pip`_:
+.. code-block:: text
+  pip install -U Flask
+
+Flask Configuration
+-------------------
+
+.. code-block:: python
+
+  from Flask import Flask
+  from flask_meter import FlaskMeter
+
+  app = Flask(__name__)
+
+  FlaskMeter(app)
+
+Or if you can use the `init_app` function:
+
+.. code-block:: python
+
+    from Flask import Flask
+    from flask_meter import FlaskMeter
+
+    app = Flask(__name__)
+
+    flask_meter = FlaskMeter()
+    flask_meter.init_app(app)
+
+.. image:: https://travis-ci.org/Kartstig/flask-meter.svg?branch=master
+        :target: https://travis-ci.org/Kartstig/flask-meter
 
 .. image:: https://img.shields.io/travis/KartStig/flask_meter.svg
-        :target: https://travis-ci.org/KartStig/flask_meter
+        :target: https://travis-ci.org/Kartstig/flask-meter
 
 .. image:: https://readthedocs.org/projects/flask-meter/badge/?version=latest
-        :target: https://flask-meter.readthedocs.io/en/latest/?badge=latest
+        :target: https://flask-meter.readthedocs.io
         :alt: Documentation Status
 
 .. image:: https://pyup.io/repos/github/KartStig/flask_meter/shield.svg
@@ -28,7 +67,8 @@ Flask-Meter adds a monitoring endpoint for consuming application host metrics.
 Features
 --------
 
-* TODO
+* Current Git Commit
+* Accepts custom functions
 
 Credits
 ---------

@@ -1,38 +1,41 @@
-# -*- coding: utf-8 -*-
-
-from __future__ import print_function
-
-from flask import Flask, jsonify
+import flask
 from datetime import datetime
+from typing import List, Callable
 
 from .git import git_stats
 
+FuncList = List[Callable]
+
+
 class FlaskMeter(object):
 
-  def __init__(self, app=None):
-    self.app = app
-
+  def __init__(self, app: flask.Flask=None, extra_checks: FuncList=[]) -> None:
     if app is not None:
-      self.init_app(app)
+      self.init_app(app, extra_checks)
 
-  def init_app(self, app):
-    if not isinstance(app, Flask):
-      raise TypeError("Argument app is not of type Flask")
+  def init_app(self, app: flask.Flask, extra_checks: list=[]):
+    if not isinstance(app, flask.Flask):
+      raise TypeError("Not a Flask Application")
 
     self.app = app
-    self.app.config['FM_GIT'] = self.app.config.get('FM_GIT', True)
+    self.app.config['FLASK_METER_ENABLE'] = self.app.config.get('FLASK_METER_ENABLE', True)
+    self.app.config['FLASK_METER_GIT'] = self.app.config.get('FLASK_METER_GIT', True)
     self.start_time = datetime.now()
 
     def _health():
-      data = {
-        "status":     "OK",
-        "uptime":     str(datetime.now() - self.start_time),
-        "app":        self.app.name,
-      }
+      data = {"status": "OK",
+              "uptime": str(datetime.now() - self.start_time),
+              "app": self.app.name}
 
-      if self.app.config['FM_GIT']:
+      if extra_checks:
+        extra_results = {func.__doc__: "OK" if func() else "DOWN"
+                         for func in extra_checks}
+        data.update(extra_results)
+
+      if self.app.config['FLASK_METER_GIT']:
         data.update({"git": git_stats()})
 
-      return jsonify(data)
+      return flask.jsonify(data)
 
-    self.app.add_url_rule('/_health', '_health', _health)
+    if self.app.config['FLASK_METER_ENABLE']:
+      self.app.add_url_rule('/_health', '_health', _health)
