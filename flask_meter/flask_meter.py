@@ -29,7 +29,7 @@ class FlaskMeter(object):
 
       if extra_checks:
         extra_results = {func.__doc__: "OK" if func() else "DOWN"
-                        for func in extra_checks}
+                         for func in extra_checks}
         data.update(extra_results)
 
       if self.app.config['FLASK_METER_GIT']:
