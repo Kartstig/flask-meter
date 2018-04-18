@@ -10,10 +10,10 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
 requirements = [
-    'Flask',
 ]
 
 test_requirements = [
+    'Flask',
     'pytest'
 ]
 
@@ -24,18 +24,13 @@ setup(
     long_description=readme + '\n\n' + history,
     author="Herman Paul Singh",
     author_email='kartstig@gmail.com',
-    url='https://github.com/KartStig/flask_meter',
+    url='https://github.com/KartStig/flask-meter',
     download_url="https://github.com/KartStig/flask_meter/tarball/0.2.0",
     packages=[
         'flask_meter',
     ],
     package_dir={'flask_meter':
                  'flask_meter'},
-    entry_points={
-        'console_scripts': [
-            'flask_meter=flask_meter.cli:main'
-        ]
-    },
     include_package_data=True,
     install_requires=requirements,
     license="MIT license",
