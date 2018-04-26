@@ -14,9 +14,9 @@ constructor.
 Installing
 ----------
 
-Install and update using `pip`_:
+Install and update using `pip`:
 .. code-block:: text
-  pip install -U Flask
+  pip install -U Flask-Meter
 
 Flask Configuration
 -------------------
