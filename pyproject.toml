@@ -6,7 +6,7 @@ description = "Flask-Meter adds a healthcheck endpoint for Flask apps."
 readme = "README.rst"
 license = { text = "MIT License" }
 classifiers = [
-    "Development Status :: 1.0.0 - Production/Stable",
+    "Development Status :: 5 - Production/Stable",
     "Environment :: Web Environment",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
