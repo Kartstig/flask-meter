@@ -10,8 +10,7 @@ Tests for `flask_meter` module.
 
 import pytest, json
 
-from contextlib import contextmanager
-from flask_meter import FlaskMeter
+from src.flask_meter import FlaskMeter
 
 
 @pytest.fixture
