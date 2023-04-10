@@ -8,7 +8,8 @@ test_flask_meter
 Tests for `flask_meter` module.
 """
 
-import pytest, json
+import json
+import pytest
 
 from src.flask_meter import FlaskMeter
 
@@ -26,7 +27,7 @@ def test_constructor(flask_app):
     fm = FlaskMeter(flask_app)
     assert isinstance(fm, FlaskMeter)
     assert fm.app.name == "TEST_APP"
-    assert fm.app.config["FLASK_METER_GIT"] == True
+    assert fm.app.config["FLASK_METER_GIT"] is True
 
 
 def test_init_app(flask_app):
