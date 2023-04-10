@@ -2,6 +2,11 @@
 History
 =======
 
+1.0.0 (2023-04-10)
+------------------
+* Proper Python packaging
+* Uploaded Documentation
+
 0.2.0 (2018-04-25)
 ------------------
 
