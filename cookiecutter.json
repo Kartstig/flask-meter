@@ -1,0 +1,10 @@
+{
+    "full_name": "Herman Singh",
+    "email": "kartstig@gmail.com",
+    "project_name": "Flask Meter",
+    "repo_name": "flask-meter",
+    "project_short_description": "A healthcheck utility for Flask",
+    "release_date": "2023-04-10",
+    "year": "2023",
+    "version": "1.0.0"
+}
