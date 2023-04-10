@@ -6,6 +6,7 @@ mypy
 mypy-extensions
 pytest
 pytest-cov
+setuptools>=63
 sphinx_rtd_theme
 Sphinx
 tox
