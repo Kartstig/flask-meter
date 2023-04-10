@@ -9,8 +9,8 @@ Healthchecks for Flask
 .. image:: https://tc.spin-flip.com/app/rest/builds/buildType:id:FlaskMeter_TestPython310/statusIcon.svg
         :target: https://tc.spin-flip.com/project/FlaskMeter?mode=trends
 
-.. image:: https://readthedocs.org/projects/Flask-Meter/badge/?version=latest
-        :target: https://Flask-Meter.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/flask-meter/badge/?version=latest
+        :target: https://flask-meter.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
 .. image:: https://codecov.io/gh/Kartstig/flask-meter/branch/master/graph/badge.svg?token=NsmixA2iCH
