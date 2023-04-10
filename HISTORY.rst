@@ -2,6 +2,10 @@
 History
 =======
 
+1.0.1 (2023-04-10)
+------------------
+* Fix Documentation
+
 1.0.0 (2023-04-10)
 ------------------
 * Proper Python packaging
