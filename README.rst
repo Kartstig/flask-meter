@@ -16,7 +16,8 @@ Installing
 
 Install and update using `pip`:
 .. code-block:: text
-  pip install -U Flask-Meter
+
+    pip install -U Flask-Meter
 
 Flask Configuration
 -------------------

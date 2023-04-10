@@ -5,7 +5,7 @@ Credits
 Development Lead
 ----------------
 
-* Herman Paul Singh <kartstig@gmail.com>
+* Herman Singh <kartstig@gmail.com>
 
 Contributors
 ------------

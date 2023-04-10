@@ -1,0 +1,53 @@
+[project]
+maintainers = [{ name = "Herman Singh", email = "kartstig@gmail.com" }]
+authors = [{ name = "Herman Singh", email = "kartstig@gmail.com" }]
+name = "Flask-Meter"
+description = "Flask-Meter adds a healthcheck endpoint for Flask apps."
+readme = "README.rst"
+license = { text = "MIT License" }
+classifiers = [
+    "Development Status :: 1.0.0 - Production/Stable",
+    "Environment :: Web Environment",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3.5",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+requires-python = ">3.7"
+dependencies = ["Flask>=0.12"]
+dynamic = ["version"]
+
+[project.urls]
+Donate = "https://github.com/sponsors/Kartstig/dashboard"
+Documentation = "https://flask.palletsprojects.com/"
+"Source Code" = "https://github.com/Kartstig/flask-meter"
+"Issue Tracker" = "https://github.com/Kartstig/flask-meter/issues"
+
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.dynamic]
+version = { attr = "flask_meter.__version__" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["error"]
+
+[tool.coverage.run]
+branch = true
+source = ["flask_meter", "tests"]
+
+[tool.coverage.paths]
+source = ["src"]
