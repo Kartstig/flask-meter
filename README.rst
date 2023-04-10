@@ -1,6 +1,20 @@
 ===============================
 Flask-Meter
 ===============================
+Healthchecks for Flask
+
+.. image:: https://img.shields.io/pypi/v/Flask-Meter.svg
+        :target: https://pypi.python.org/pypi/Flask-Meter
+
+.. image:: https://tc.spin-flip.com/app/rest/builds/buildType:id:FlaskMeter_TestPython310/statusIcon.svg
+        :target: https://tc.spin-flip.com/project/FlaskMeter?mode=trends
+
+.. image:: https://readthedocs.org/projects/Flask-Meter/badge/?version=latest
+        :target: https://Flask-Meter.readthedocs.io/en/latest/?badge=latest
+        :alt: Documentation Status
+
+.. image:: https://codecov.io/gh/Kartstig/flask-meter/branch/master/graph/badge.svg?token=NsmixA2iCH
+        :target: https://codecov.io/gh/Kartstig/flask-meter
 
 Flask-Meter is an add-on to the Flask web framework. Flask-Meter adds a
 monitoring endpoint for consuming application metrics. It can be really simple
@@ -42,24 +56,6 @@ Or if you can use the `init_app` function:
 
     flask_meter = FlaskMeter()
     flask_meter.init_app(app)
-
-.. image:: https://travis-ci.org/Kartstig/flask-meter.svg?branch=master
-        :target: https://travis-ci.org/Kartstig/flask-meter
-
-.. image:: https://img.shields.io/travis/KartStig/flask_meter.svg
-        :target: https://travis-ci.org/Kartstig/flask-meter
-
-.. image:: https://readthedocs.org/projects/flask-meter/badge/?version=latest
-        :target: https://flask-meter.readthedocs.io
-        :alt: Documentation Status
-
-.. image:: https://pyup.io/repos/github/KartStig/flask_meter/shield.svg
-     :target: https://pyup.io/repos/github/KartStig/flask_meter/
-     :alt: Updates
-
-
-Flask-Meter adds a monitoring endpoint for consuming application host metrics.
-
 
 * Free software: MIT license
 * Documentation: https://flask-meter.readthedocs.io.
