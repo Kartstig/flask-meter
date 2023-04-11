@@ -1,7 +1,9 @@
 ===============================
 Flask-Meter
 ===============================
-Healthchecks for Flask
+.. code-block:: text
+
+        Healthchecks for [Flask](https://github.com/pallets/flask/) Apps
 
 .. image:: https://img.shields.io/pypi/v/Flask-Meter.svg
         :target: https://pypi.python.org/pypi/Flask-Meter
@@ -28,10 +30,12 @@ constructor.
 Installing
 ----------
 
-Install and update using `pip`:
+Install and update using `pip`\:
+
 .. code-block:: text
 
-    pip install -U Flask-Meter
+        pip install -U Flask-Meter
+
 
 Flask Configuration
 -------------------
@@ -66,6 +70,14 @@ Features
 
 * Current Git Commit
 * Accepts custom functions
+
+
+Sponsorship
+-----------
+
+Put your logo here! [Become a sponsor](https://github.com/sponsors/Kartstig) and support this project!
+
+
 
 Credits
 ---------
