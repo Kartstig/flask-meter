@@ -2,7 +2,9 @@
 Flask-Meter
 ===============================
 
-        Healthchecks for [Flask](https://github.com/pallets/flask/) Apps
+        Healthchecks for Flask_ Apps
+
+.. _Flask: https://github.com/pallets/flask/
 
 .. image:: https://img.shields.io/pypi/v/Flask-Meter.svg
         :target: https://pypi.python.org/pypi/Flask-Meter
@@ -74,7 +76,9 @@ Features
 Sponsorship
 -----------
 
-Put your logo here! [Become a sponsor](https://github.com/sponsors/Kartstig) and support this project!
+Put your logo here! `Become a sponsor`_ and support this project!
+
+.. _Become a sponsor: https://github.com/sponsors/Kartstig
 
 
 
