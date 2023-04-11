@@ -1,7 +1,6 @@
 ===============================
 Flask-Meter
 ===============================
-.. code-block:: text
 
         Healthchecks for [Flask](https://github.com/pallets/flask/) Apps
 
