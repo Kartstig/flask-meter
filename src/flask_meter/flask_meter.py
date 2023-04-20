@@ -1,4 +1,5 @@
 import flask
+import logging
 from datetime import datetime
 from typing import List, Callable, Dict, Optional, Union
 
@@ -8,6 +9,9 @@ except ImportError:
     from typing_extensions import Literal  # Python 3.7 support
 
 from .git import git_stats, GitReturn
+
+logger = logging.getLogger(__name__)
+
 
 FuncList = List[Callable]
 
@@ -50,7 +54,8 @@ class FlaskMeter(object):
                     try:
                         res: bool = func()
                         raw_results.append(res)
-                    except:
+                    except Exception as e:
+                        logger.error(f"Error in healthcheck: {str(e)}")
                         res = False
 
                     results[func.__doc__] = "OK" if res else "DOWN"

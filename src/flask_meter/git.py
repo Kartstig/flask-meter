@@ -1,6 +1,11 @@
 import re
 import subprocess
-from typing import Literal, TypedDict, Union
+from typing import Union
+
+try:
+    from typing import Literal, TypedDict
+except ImportError:
+    from typing_extensions import Literal, TypedDict  # Python 3.7 support
 
 
 class GitReturn(TypedDict):
