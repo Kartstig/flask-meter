@@ -1,5 +1,12 @@
 import re
 import subprocess
+from typing import Literal, TypedDict, Union
+
+
+class GitReturn(TypedDict):
+    commit: Union[str, Literal["Unknown"]]
+    author: Union[str, Literal["Unknown"]]
+    date: Union[str, Literal["Unknown"]]
 
 
 GIT_CMD = "git log | head -4"
@@ -8,7 +15,7 @@ RE_AUTHOR = re.compile(r"Author\:[\W]+(.*)", re.MULTILINE)
 RE_DATE = re.compile(r"Date\:[\W]+(.*)", re.MULTILINE)
 
 
-def git_stats():
+def git_stats() -> GitReturn:
     try:
         ret = subprocess.check_output([GIT_CMD], shell=True).decode("utf-8")
         commit = re.search(RE_COMMIT, ret)
@@ -20,4 +27,8 @@ def git_stats():
             "date": date.group(1) if date else "Unknown",
         }
     except subprocess.CalledProcessError:
-        return {"Error"}
+        return {
+            "commit": "Unknown",
+            "author": "Unknown",
+            "date": "Unknown",
+        }

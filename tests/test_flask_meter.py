@@ -76,7 +76,7 @@ def test_disable(flask_app):
     assert rv.status_code == 404
 
 
-def test_extra(flask_app):
+def test_extra_ok(flask_app):
     def fake_function():
         """TestingFunc"""
         return True
@@ -90,3 +90,19 @@ def test_extra(flask_app):
     assert rv.status_code == 200
     data = json.loads(rv.data.decode("utf-8"))
     assert data["TestingFunc"] == "OK"
+
+
+def test_extra_exception(flask_app):
+    def fake_function():
+        """FailFunc"""
+        raise Exception("This function raised an exception")
+
+    fm = FlaskMeter()
+    fm.init_app(flask_app, extra_checks=[fake_function])
+
+    client = fm.app.test_client()
+    rv = client.get("/_health")
+
+    assert rv.status_code == 200
+    data = json.loads(rv.data.decode("utf-8"))
+    assert data["FailFunc"] == "DOWN"

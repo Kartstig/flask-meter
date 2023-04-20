@@ -1,18 +1,25 @@
 import flask
 from datetime import datetime
-from typing import List, Callable
+from typing import List, Literal, Callable, Dict, Optional, Union
 
-from .git import git_stats
+from .git import git_stats, GitReturn
 
 FuncList = List[Callable]
 
+ResponseJson = Dict[
+    Union[Literal["uptime"], Literal["app"], Literal["status"], Literal["git"], str],
+    Union[str, Literal["OK"], Literal["DOWN"], GitReturn],
+]
+
 
 class FlaskMeter(object):
-    def __init__(self, app: flask.Flask = None, extra_checks: FuncList = []) -> None:
+    def __init__(
+        self, app: Optional[flask.Flask] = None, extra_checks: FuncList = []
+    ) -> None:
         if app is not None:
             self.init_app(app, extra_checks)
 
-    def init_app(self, app: flask.Flask, extra_checks: list = []):
+    def init_app(self, app: flask.Flask, extra_checks: list = []) -> None:
         if not isinstance(app, flask.Flask):
             raise TypeError("Not a Flask Application")
 
@@ -25,18 +32,26 @@ class FlaskMeter(object):
         )
         self.start_time = datetime.now()
 
-        def _health():
-            data = {
-                "status": "OK",
+        def _health() -> flask.Response:
+            data: ResponseJson = {
                 "uptime": str(datetime.now() - self.start_time),
                 "app": self.app.name,
             }
 
+            raw_results: List[bool] = []
             if extra_checks:
-                extra_results = {
-                    func.__doc__: "OK" if func() else "DOWN" for func in extra_checks
-                }
-                data.update(extra_results)
+                results = {}
+                for func in extra_checks:
+                    try:
+                        res: bool = func()
+                        raw_results.append(res)
+                    except:
+                        res = False
+
+                    results[func.__doc__] = "OK" if res else "DOWN"
+                data.update(results)
+
+            data["status"] = "OK" if all(raw_results) else "DOWN"
 
             if self.app.config["FLASK_METER_GIT"]:
                 data.update({"git": git_stats()})
