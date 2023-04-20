@@ -19,6 +19,9 @@ Flask-Meter
 .. image:: https://codecov.io/gh/Kartstig/flask-meter/branch/master/graph/badge.svg?token=NsmixA2iCH
         :target: https://codecov.io/gh/Kartstig/flask-meter
 
+.. image:: https://img.shields.io/pypi/dm/Flask-Meter
+        :alt: PyPI - Downloads
+
 Flask-Meter is an add-on to the Flask web framework. Flask-Meter adds a
 monitoring endpoint for consuming application metrics. It can be really simple
 to set up. Flask-Meter modifies the Flask application to provide an enpoint
