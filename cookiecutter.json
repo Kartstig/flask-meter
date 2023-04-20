@@ -6,5 +6,5 @@
   "project_short_description": "A healthcheck utility for Flask",
   "release_date": "2023-04-10",
   "year": "2023",
-  "version": "1.0.1"
+  "version": "1.0.2"
 }

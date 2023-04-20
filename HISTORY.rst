@@ -2,6 +2,11 @@
 History
 =======
 
+1.0.2 (2023-04-20)
+------------------
+* Update exception handling
+* Fix a bug where status would report incorrectly
+
 1.0.1 (2023-04-10)
 ------------------
 * Fix Documentation
