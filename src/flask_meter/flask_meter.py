@@ -1,6 +1,11 @@
 import flask
 from datetime import datetime
-from typing import List, Literal, Callable, Dict, Optional, Union
+from typing import List, Callable, Dict, Optional, Union
+
+try:
+    from typing import Literal
+except ImportError:
+    from typing_extensions import Literal  # Python 3.7 support
 
 from .git import git_stats, GitReturn
 
