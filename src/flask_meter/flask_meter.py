@@ -70,7 +70,7 @@ class FlaskMeter(object):
             if self.app.config["FLASK_METER_GIT"]:
                 data.update({"git": git_stats()})
 
-            if self.app.config['FLASK_METER_VERSION']:
+            if self.app.config["FLASK_METER_VERSION"]:
                 data.update({"version": read_version_file()})
 
             return flask.jsonify(data)
