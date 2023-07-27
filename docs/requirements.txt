@@ -13,7 +13,7 @@ colorama==0.4.6
 coverage==7.2.7
 cryptography==41.0.2
 distlib==0.3.7
-docutils==0.20.1
+docutils==0.18.1
 exceptiongroup==1.1.2
 filelock==3.12.2
 flake8==6.0.0
@@ -55,10 +55,12 @@ rich==13.4.2
 SecretStorage==3.3.3
 six==1.16.0
 snowballstemmer==2.2.0
-Sphinx==7.1.1
+Sphinx==6.2.1
+sphinx-rtd-theme==1.2.2
 sphinxcontrib-applehelp==1.0.4
 sphinxcontrib-devhelp==1.0.2
 sphinxcontrib-htmlhelp==2.0.1
+sphinxcontrib-jquery==4.1
 sphinxcontrib-jsmath==1.0.1
 sphinxcontrib-qthelp==1.0.3
 sphinxcontrib-serializinghtml==1.1.5
