@@ -1,6 +1,6 @@
 alabaster==0.7.13
 Babel==2.12.1
-black==23.7.0
+black>=23
 bleach==6.0.0
 blinker==1.6.2
 cachetools==5.3.1
