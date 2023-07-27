@@ -2,6 +2,11 @@
 History
 =======
 
+1.1.0 (2023-07-27)
+------------------
+* Add version stats
+* Add configuration info to README
+
 1.0.2 (2023-04-20)
 ------------------
 * Update exception handling
