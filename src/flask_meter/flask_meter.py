@@ -9,6 +9,7 @@ except ImportError:
     from typing_extensions import Literal  # Python 3.7 support
 
 from .git import git_stats, GitReturn
+from .version import read_version_file
 
 logger = logging.getLogger(__name__)
 
@@ -39,6 +40,9 @@ class FlaskMeter(object):
         self.app.config["FLASK_METER_GIT"] = self.app.config.get(
             "FLASK_METER_GIT", True
         )
+        self.app.config["FLASK_METER_VERSION"] = self.app.config.get(
+            "FLASK_METER_VERSION", True
+        )
         self.start_time = datetime.now()
 
         def _health() -> flask.Response:
@@ -65,6 +69,9 @@ class FlaskMeter(object):
 
             if self.app.config["FLASK_METER_GIT"]:
                 data.update({"git": git_stats()})
+
+            if self.app.config["FLASK_METER_VERSION"]:
+                data.update({"version": read_version_file()})
 
             return flask.jsonify(data)
 
