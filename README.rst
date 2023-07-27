@@ -73,7 +73,16 @@ Features
 --------
 
 * Current Git Commit
+* Current Version
 * Accepts custom functions
+
+
+Configuration
+-------------
+
+FLASK_METER_ENABLE - (True/False, default: True) Enable/Disable Flask-Meter
+FLASK_METER_GIT - (True/False, default: True) Enable/Disable Git Stats
+FLASK_METER_VERSION - (True/False, default: True) Enable/Disable Version Stats
 
 
 Sponsorship
