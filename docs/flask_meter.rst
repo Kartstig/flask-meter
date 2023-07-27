@@ -20,6 +20,14 @@ flask\_meter.git module
    :undoc-members:
    :show-inheritance:
 
+flask\_meter.version module
+---------------------------
+
+.. automodule:: flask_meter.version
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 
