@@ -2,6 +2,10 @@
 History
 =======
 
+1.1.2 (2023-07-28)
+------------------
+* Fixes an issue with documentation builds
+
 1.1.1 (2023-07-27)
 ------------------
 * Fixes a bug where whitespace is not stripped from version stats
